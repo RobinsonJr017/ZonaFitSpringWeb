@@ -54,6 +54,20 @@
                             <h:outputText value="#{cliente.membresia}"/>
                         </p:column>
 
+                        <p:column headerText="Membresía">
+                            <p:commandButton value="Editar" icon="pi pi-pencil"
+                                             update=":forma-modal:cliente-ventana"
+                                             process="@this"
+                                             oncomplete="PF('VentanaModalCliente').show()"
+                                             class="ui-button-primary"
+                                             style="margin-right: ,5rem">
+                                <f:setPropertyActionListener
+                                    value="#{cliente}"
+                                    target="#{indexControlador.clienteSeleccionado}"/>
+                                <p:resetInput target=":forma-modal:cliente-ventana"/>
+                            </p:commandButton>
+                        </p:column>
+
                     </p:dataTable>
                 </div>
             </h:form>
