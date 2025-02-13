@@ -41,13 +41,13 @@ public class IndexControlador {
     }
 
     public void guardarCliente(){
-        logger.info("Cliente a guardar: " + this.clienteSeleccionado);
+        logger.info("cliente a guardar: " + this.clienteSeleccionado);
         // Agregar (insert)
         if(this.clienteSeleccionado.getId() == null){
             this.clienteServicio.guardarCliente(this.clienteSeleccionado);
             this.clientes.add(this.clienteSeleccionado);
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage("Cliente agregado:"));
+                    new FacesMessage("Cliente Agregado"));
         }
         // Modificar (update)
         else{
@@ -56,7 +56,7 @@ public class IndexControlador {
                     new FacesMessage("Cliente Actualizado"));
         }
         // Ocultar la ventana modal
-        PrimeFaces.current().executeScript("PF('VentanaModalCliente').hide()");
+        PrimeFaces.current().executeScript("PF('ventanaModalCliente').hide()");
         // Actualizar la tabla usando ajax
         PrimeFaces.current().ajax().update("forma-clientes:mensajes",
                 "forma-clientes:clientes-tabla");
